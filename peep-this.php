@@ -4,7 +4,7 @@ Plugin Name: Peep This
 Plugin URI: http://tx-daily.co.za/peep-this
 Description: Adds a "Peep This" button to every post and page. Shortens URLs in advance. Customize under Settings > Peep This.
 Author: Tx Daily (Seagyn Davis)
-Version: 0.1
+Version: 1.01
 Author URI: http://www.txdaily.co.za/
 Text Domain: peep-this
 */
@@ -136,12 +136,9 @@ function insert_peep_this($content) {
 		$align = pt_option('pt_alignment'); 
 		if ($align == '')	$align = 'left';
 		$p = '<p align="' . $align . '">'; $p2 = '</p>';
-		if (pt_option('pt_auto_display') == 'true')
-			$content .= pt_display_limits($p);
-		if (pt_option('pt_auto_display') == 'true')
-			$content .= peep_this() . '&nbsp;';
-		if (pt_option('pt_auto_display') == 'true')
-			$content .= pt_display_limits($p2);
+		$content .= pt_display_limits($p);
+		$content .= peep_this() . '&nbsp;';
+		$content .= pt_display_limits($p2);
 	}
 	return $content;
 }
@@ -152,7 +149,7 @@ function peep_this_css() {
 
 function update_pt_options() {
 	if(isset($_REQUEST['pt'])) $new_options = $_REQUEST['pt'];
-	$booleans = array('pt_30', 'pt_limit_to_single', 'pt_limit_to_posts', 'pt_auto_display');
+	$booleans = array('pt_alignment', 'pt_limit_to_single', 'pt_limit_to_posts', 'pt_twitter_icon');
 	foreach($booleans as $key)
 		$new_options[$key] = $new_options[$key] ? 'true' : 'false';
 	update_option('peep_this_settings', $new_options);
@@ -234,8 +231,7 @@ function print_pt_form() {
 	__('Hide Peep This on pages', 'peep-this') .
 	'</label></p>';	pt_image_selection(); echo '<input type="hidden"' .
 	' name="action" value="update" /><input type="hidden" name="page_' .
-	'options" value="pt[pt_30],pt[pt_alignment],pt'.
-	'[pt_auto_display],pt[pt_limit_to_single],pt[pt_url_www],pt[pt_" />' .
+	'options" value="pt[pt_alignment],pt[pt_limit_to_single],pt[pt_limit_to_posts],pt[pt_gatorpeeps_icon]" />' .
 	'<p class="submit"><input type="submit" name="submit" value="' .
 	__('Save Options', 'peep-this') . '" /> <input type="submit" name="' .
 	'reset" value="' . __('Reset Options', 'peep-this') . '" onclick="' .
@@ -247,7 +243,7 @@ function print_pt_form() {
 
 function peep_this_install() {
 	$add_options = array('pt_alignment' => 'left',
-	'pt_twitter_icon' => 'pt-gatorpeeps-big.png', 'pt_limit_to_single' =>
+	'pt_gatorpeeps_icon' => 'pt-gatorpeeps-big.png', 'pt_limit_to_single' =>
 	'false','pt_limit_to_posts' => 'false');
 	foreach($add_options as $key => $value) {
 		if ($old = get_option($key)) {$add_options[$key] = $old;

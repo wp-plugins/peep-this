@@ -4,7 +4,7 @@ Donate link: none
 Tags: gatorpeeps, peeps, social, bookmarking
 Requires at least: 1.5
 Tested up to: 2.7.1
-Stable tag: 1.0
+Stable tag: 1.01
 
 Adds a "Peep This Post" link to every post and page, so your readers can share entries on Gatorpeeps. Shortens URLs in advance.
 
@@ -14,7 +14,7 @@ Adds a "Peep This" link to every post and page. Uses GatorURL to shorten the URL
 
 NOTE: On WordPress 1.5, you must go to Options > Peep This and click "Save Options" before the Peep This links will appear.
 
-Copyright 2009  Seagyn Davis  ( email : sdavis@txsolutions.co.za )
+Copyright 2009  Tx Daily ( support : http://txdaily.co.za/wordpress/peep-this/ )
 Freely released under Version 2 of the GNU General Public License as published
 by the Free Software Foundation, or, at your option, any later version.
 
@@ -26,6 +26,8 @@ by the Free Software Foundation, or, at your option, any later version.
 4. Peep This icons should automatically appear on every post and page! Go to Settings > Peep This to change stuff.
 
 == Version History ==
+
+1.01: Fixed display bug.
 
 1.0: 2009-05-04: First release.
 
