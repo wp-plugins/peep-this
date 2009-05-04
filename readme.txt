@@ -4,7 +4,7 @@ Donate link: none
 Tags: gatorpeeps, peeps, social, bookmarking
 Requires at least: 1.5
 Tested up to: 2.7.1
-Stable tag: 1.01
+Stable tag: 1.02
 
 Adds a "Peep This Post" link to every post and page, so your readers can share entries on Gatorpeeps. Shortens URLs in advance.
 
@@ -26,6 +26,8 @@ by the Free Software Foundation, or, at your option, any later version.
 4. Peep This icons should automatically appear on every post and page! Go to Settings > Peep This to change stuff.
 
 == Version History ==
+
+1.02: Minor update
 
 1.01: Fixed display bug.
 
