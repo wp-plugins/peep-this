@@ -4,7 +4,7 @@ Plugin Name: Peep This
 Plugin URI: http://tx-daily.co.za/peep-this
 Description: Adds a "Peep This" button to every post and page. Shortens URLs in advance. Customize under Settings > Peep This.
 Author: Tx Daily (Seagyn Davis)
-Version: 1.02
+Version: 1.1
 Author URI: http://txdaily.co.za/
 Text Domain: peep-this
 */
@@ -36,7 +36,7 @@ function pt_read_file($url) {
 
 
 function peep_this_short_url() {
-	global $id; $purl = get_permalink();
+	global $id; $purl = urlencode(get_permalink());
 	$cached_url = get_post_meta($id, 'peep_this_url', true);
 	if($cached_url && $cached_url != 'getnew') return $cached_url;
 	else {
@@ -107,22 +107,26 @@ function pt_display_limits($item) {
 	}
 }
 
-function peep_this_url($peep_text = '') {
+function peep_this_url($service = 'gatorpeeps') {
 	$peep_title = peep_this_trim_title();
-	$peep_url = peep_this_short_url();
-	$item = 'http://gatorpeeps.com/?url='.$peep_url.'&txt='.$peep_title;
+	if ($service = 'gatorpeeps'):
+		$peep_url = get_permalink();
+	else:
+		$peep_url = peep_this_short_url();
+	endif;
+	$item = 'http://gatorpeeps.com/?url='.urlencode($peep_url).'&txt='.$peep_title;
 	return pt_display_limits($item);
 }
 
 function peep_this() {
 	if ($img_class == '') $img_class = 'nothumb';
-	$url = peep_this_url($peep_text);
+	$url = peep_this_url();
 	if ($icon_file == '') {
 		if (pt_option('pt_gatorpeeps_icon') == '') $icon_file = 'pt-gatorpeeps.png';
 		else $icon_file = pt_option('pt_gatorpeeps_icon');
 	}
 	$icon = get_option('siteurl').'/wp-content/plugins/peep-this/icons/'.$icon_file;
-	$item = '<a class="peep-this" href="'.$url.'" title="Peep on Gatorpeeps"><img class="nothumb" src="'.
+	$item = '<a class="peep-this" href="'.$url.'" title="Peep on Gatorpeeps" rel="nofollow"><img class="nothumb" src="'.
 			$icon.'" alt="Peep on Gatorpeeps" border="0" /></a>';
 	return pt_display_limits($item);
 }
