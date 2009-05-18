@@ -4,7 +4,7 @@ Donate link: none
 Tags: gatorpeeps, peeps, social, bookmarking
 Requires at least: 1.5
 Tested up to: 2.7.1
-Stable tag: 1.1
+Stable tag: 1.3
 
 Adds a "Peep This Post" link to every post and page, so your readers can share entries on Gatorpeeps. Shortens URLs in advance.
 
@@ -27,7 +27,7 @@ by the Free Software Foundation, or, at your option, any later version.
 
 == Version History ==
 
-1.1: Added the "nofollow" attribute to links and removed URL shortner as Gatorpeeps now takes on that responsibility.
+1.3: Added the "nofollow" attribute to links and removed URL shortner as Gatorpeeps now takes on that responsibility.
 
 1.02: Minor update
 

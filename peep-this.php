@@ -4,7 +4,7 @@ Plugin Name: Peep This
 Plugin URI: http://tx-daily.co.za/peep-this
 Description: Adds a "Peep This" button to every post and page. Shortens URLs in advance. Customize under Settings > Peep This.
 Author: Tx Daily (Seagyn Davis)
-Version: 1.1
+Version: 1.3
 Author URI: http://txdaily.co.za/
 Text Domain: peep-this
 */
